@@ -10,7 +10,7 @@
  * Copyright (C) 2015 xxx
  * All rights reserved
  */
-public class LinkedQueue {
+public class LinkedQueue<T> {
 
     /**
      * 头元素
@@ -27,7 +27,7 @@ public class LinkedQueue {
      * @param item
      * @return 是否添加成功
      */
-    public boolean enqueue(String item){
+    public boolean enqueue(T item){
         if (head == null){
             Linked data = new Linked(item,null);
             head = data;
@@ -47,11 +47,11 @@ public class LinkedQueue {
         return true;
     }
 
-    public String dequeue(){
+    public Object dequeue(){
         if (head == null){
             return "";
         }
-        String s = head.data;
+        Object o = head.data;
         head = head.next;
         if (head == null){
             /**
@@ -60,17 +60,17 @@ public class LinkedQueue {
             tail = null;
         }
         System.out.println(head+"  \\  "+tail);
-        return s;
+        return o;
     }
 
     /**
      * 用于保存队列中的元素
      */
-    private static class Linked{
-        private String data;//数据
+    private static class Linked<T>{
+        private T data;//数据
         private Linked next;//下一个元素的指针
 
-        public Linked(String data, Linked next) {
+        public Linked(T data, Linked next) {
             this.data = data;
             this.next = next;
         }

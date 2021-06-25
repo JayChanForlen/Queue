@@ -13,7 +13,7 @@ public class Test {
                 "hello world!"
         );
 
-        LinkedQueue queue = new LinkedQueue();
+        LinkedQueue<String> queue = new LinkedQueue<String>();
         System.out.println("input");
         queue.enqueue("a");
         queue.enqueue("b");
