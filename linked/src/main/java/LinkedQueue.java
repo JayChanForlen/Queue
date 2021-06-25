@@ -47,11 +47,11 @@ public class LinkedQueue<T> {
         return true;
     }
 
-    public Object dequeue(){
+    public T dequeue(){
         if (head == null){
-            return "";
+            return null;
         }
-        Object o = head.data;
+        T t = (T)head.data;
         head = head.next;
         if (head == null){
             /**
@@ -60,7 +60,7 @@ public class LinkedQueue<T> {
             tail = null;
         }
         System.out.println(head+"  \\  "+tail);
-        return o;
+        return t;
     }
 
     /**
