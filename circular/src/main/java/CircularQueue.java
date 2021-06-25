@@ -64,4 +64,41 @@ public class CircularQueue<T> {
         return t;
     }
 
+    /**
+     * 下面记录大神写的关于循环队列的出入方式，值得借鉴
+     * 主要区别是通过增位后的取余的哈希来进行位置的切换
+     * ，也就是说，我其实对哈希算法的使用场景是受定势思维限制的，如果我没法在短时间内将思维开拓，我就要记住这种算法使用场景
+     */
+    // 入队
+    public boolean _enqueue(T item) {
+        // 队列满了
+        if ((tail + 1) % count == head) {
+            return false;
+        }
+        data[tail] = item;
+        tail = (tail + 1) % count;
+        return true;
+    }
+
+    // 出队
+    public T _dequeue() {
+        // 如果head == tail 表示队列为空
+        if (head == tail) {
+            return null;
+        }
+        T ret = (T)data[head];
+        head = (head + 1) % count;
+        return ret;
+    }
+
+    public void printAll() {
+        if (0 == count) {
+            return;
+        }
+        for (int i = head; i % count != tail; i = (i + 1) % count) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+    }
+
 }
